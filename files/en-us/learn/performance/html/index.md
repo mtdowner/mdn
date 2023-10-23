@@ -132,7 +132,7 @@ There are, however, some key differences between providing sources for images an
 
 ### Lazy loading images
 
-A very useful technique for improving performance is **lazy loading**. This refers to the practice of not loading all images immediately when the HTML is rendered, but instead only loading them when they are actually visible to the user in the viewport (or imminently visible). This means that the immediately visible/usable content is ready to use more quickly, whereas subsequent content only has its images rendered when scrolled to, and the browser won't waste bandwith loading images that the user will never see.
+A very useful technique for improving performance is **lazy loading**. This refers to the practice of not loading all images immediately when the HTML is rendered, but instead only loading them when they are actually visible to the user in the viewport (or imminently visible). This means that the immediately visible/usable content is ready to use more quickly, whereas subsequent content only has its images rendered when scrolled to, and the browser won't waste bandwidth loading images that the user will never see.
 
 Lazy loading has historically been handled using JavaScript, but browsers now have a `loading` attribute available that can instruct the browser to lazy load images automatically:
 
@@ -223,7 +223,7 @@ pElem.addEventListener("click", () => {
 });
 ```
 
-We can apply this script to the page by refering to it in a `<script>` element like this:
+We can apply this script to the page by referring to it in a `<script>` element like this:
 
 ```html
 <script src="index.js"></script>
@@ -231,7 +231,7 @@ We can apply this script to the page by refering to it in a `<script>` element l
 
 If we put this `<script>` element before the `<p>` element in the source order (for example, in the {{htmlelement("head")}} element), the page will throw an error (Chrome for example reports "Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')" to the console). This occurs because the script relies on the `<p>` element to work, but at the point the script is parsed, the `<p>` element does not exist on the page. It has not yet been rendered.
 
-You can fix the above issue by putting the `<script>` element after the `<p>` element (for example at the end of the document body), or by running the code inside a suitable event handler (for example run it on the [`DOMContentLoaded`](/en-US/docs/Web/API/Window/DOMContentLoaded_event), which fires when the DOM has been completely parsed).
+You can fix the above issue by putting the `<script>` element after the `<p>` element (for example at the end of the document body), or by running the code inside a suitable event handler (for example run it on the [`DOMContentLoaded`](/en-US/docs/Web/API/Document/DOMContentLoaded_event), which fires when the DOM has been completely parsed).
 
 However, this doesn't solve the problem of waiting for the script to load. Better performance can be achieved by adding the `async` attribute to the `<script>` element:
 
